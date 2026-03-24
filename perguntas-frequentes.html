@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas Frequentes | Clínica Baros</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#002A4E',
+                            accent: '#35B4E8',
+                            dark: '#1E293B',
+                            grayText: '#64748B',
+                            lightGray: '#F8FAFC',
+                            white: '#FFFFFF',
+                            border: '#E2E8F0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Open Sans"', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    },
+                    animation: {
+                        float: 'float 4s ease-in-out infinite',
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { animation: pageFade 0.5s ease-out; }
+        a, button, input, textarea, select { transition: all 0.3s ease; }
+        @keyframes pageFade {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Classe customizada para o Accordion expandir suavemente */
+        .faq-content { transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out; }
+    </style>
+</head>
+<body class="bg-brand-lightGray text-brand-dark font-sans antialiased overflow-x-hidden">
+
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-6 bg-transparent border-b border-transparent transition-all duration-300" data-aos="fade-down" data-aos-duration="800">
+        <div class="container mx-auto px-6 flex justify-between items-center max-w-7xl">
+            <a href="index.html" class="flex items-center">
+                <img src="assets/logo.jpg" alt="Clínica Baros" class="h-12 w-auto object-contain">
+            </a>
+            
+            <div id="nav-links" class="hidden lg:flex items-center gap-8 font-medium text-sm text-white transition-colors duration-300">
+                <a href="index.html" class="hover:text-brand-accent transition-colors duration-300">Home</a>
+                <a href="clinica.html" class="hover:text-brand-accent transition-colors duration-300">Clínica Baros</a>
+                <div class="relative group">
+                    <button class="inline-flex items-center gap-2 hover:text-brand-accent transition-colors duration-300">
+                        Serviços <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="absolute top-full left-0 mt-3 w-64 bg-white text-brand-dark rounded-xl shadow-xl border border-brand-border p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                        <a href="tratamento-obesidade.html" class="block px-4 py-2 rounded-lg hover:bg-brand-lightGray hover:text-brand-accent transition-colors">Tratamento da Obesidade</a>
+                        <a href="avaliacao-corporal.html" class="block px-4 py-2 rounded-lg hover:bg-brand-lightGray hover:text-brand-accent transition-colors">Avaliação Corporal</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="inline-flex items-center gap-2 hover:text-brand-accent transition-colors duration-300">
+                        Cirurgia <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="absolute top-full left-0 mt-3 w-56 bg-white text-brand-dark rounded-xl shadow-xl border border-brand-border p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                        <a href="cirurgia-bariatrica.html" class="block px-4 py-2 rounded-lg hover:bg-brand-lightGray hover:text-brand-accent transition-colors">Bariátrica</a>
+                        <a href="cirurgia-metabolica.html" class="block px-4 py-2 rounded-lg hover:bg-brand-lightGray hover:text-brand-accent transition-colors">Metabólica</a>
+                    </div>
+                </div>
+                <a href="perguntas-frequentes.html" class="relative group py-2">
+                    <span class="text-brand-accent transition-colors duration-300">Perguntas Frequentes</span>
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-brand-accent transform scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+                <a href="convenios.html" class="hover:text-brand-accent transition-colors duration-300">Convênios</a>
+                <a href="blog.html" class="hover:text-brand-accent transition-colors duration-300">Blog</a>
+                <a href="contato.html" class="px-6 py-2.5 bg-brand-accent text-white rounded-full hover:bg-white hover:text-brand-primary transition-all duration-300 shadow-md hover:shadow-[0_0_15px_rgba(53,180,232,0.5)] hover:-translate-y-0.5">
+                    Agendar Consulta
+                </a>
+            </div>
+
+            <button id="mobile-btn" class="lg:hidden text-white text-2xl hover:text-brand-accent transition-colors duration-300">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <header class="relative pt-40 pb-24 overflow-hidden flex items-center justify-center min-h-[400px]">
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1631217871836-31dcb96f5df1?q=80&w=1920&auto=format&fit=crop" alt="Perguntas Frequentes" class="w-full h-full object-cover object-center transform scale-105">
+                <div class="absolute inset-0 bg-brand-primary/85 backdrop-blur-[2px]"></div>
+            </div>
+            <div class="container mx-auto px-6 max-w-7xl relative z-10 text-center" data-aos="fade-up" data-aos-duration="1000">
+                <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-4 block">Central de Dúvidas</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading text-white tracking-tight">
+                    Perguntas <span class="text-brand-accent">Frequentes</span>
+                </h1>
+                <p class="text-blue-100 mt-6 max-w-2xl mx-auto text-lg leading-relaxed">
+                    Informação transparente e clara para você tomar as melhores decisões sobre a sua saúde.
+                </p>
+            </div>
+            
+            <div class="absolute bottom-0 left-0 right-0 z-10 transform translate-y-1">
+                <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto text-brand-lightGray">
+                    <path d="M0 48H1440V0C1440 0 1140 48 720 48C300 48 0 0 0 0V48Z" fill="currentColor"/>
+                </svg>
+            </div>
+        </header>
+
+        <section class="py-24 bg-brand-lightGray relative overflow-hidden">
+            <div class="container mx-auto px-6 max-w-4xl relative z-10">
+                
+                <div class="space-y-4" id="faq-container">
+                    
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <button class="faq-btn w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none hover:bg-brand-lightGray transition-colors">
+                            <span class="font-bold font-heading text-brand-primary text-lg pr-4 flex items-center gap-3">
+                                <span class="text-brand-accent">01.</span> Quem pode ter indicação para cirurgia bariátrica ou metabólica?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-blue-50 text-brand-accent flex items-center justify-center shrink-0">
+                                <i class="fas fa-chevron-down transition-transform duration-300 transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden bg-white">
+                            <p class="px-8 pb-6 text-brand-grayText leading-relaxed border-t border-brand-lightGray pt-6">
+                                A indicação depende de avaliação médica criteriosa, considerando histórico de saúde, grau de obesidade, comorbidades e condições clínicas gerais.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="150">
+                        <button class="faq-btn w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none hover:bg-brand-lightGray transition-colors">
+                            <span class="font-bold font-heading text-brand-primary text-lg pr-4 flex items-center gap-3">
+                                <span class="text-brand-accent">02.</span> É necessário acompanhamento com outros profissionais além do cirurgião?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-blue-50 text-brand-accent flex items-center justify-center shrink-0">
+                                <i class="fas fa-chevron-down transition-transform duration-300 transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden bg-white">
+                            <p class="px-8 pb-6 text-brand-grayText leading-relaxed border-t border-brand-lightGray pt-6">
+                                Sim. O tratamento envolve equipe multidisciplinar com acompanhamento nutricional, psicológico e clínico no pré e no pós-operatório.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <button class="faq-btn w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none hover:bg-brand-lightGray transition-colors">
+                            <span class="font-bold font-heading text-brand-primary text-lg pr-4 flex items-center gap-3">
+                                <span class="text-brand-accent">03.</span> A cirurgia bariátrica ajuda a melhorar outras condições de saúde?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-blue-50 text-brand-accent flex items-center justify-center shrink-0">
+                                <i class="fas fa-chevron-down transition-transform duration-300 transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden bg-white">
+                            <p class="px-8 pb-6 text-brand-grayText leading-relaxed border-t border-brand-lightGray pt-6">
+                                O tratamento pode contribuir para a melhora de condições associadas à obesidade, como diabetes tipo 2, hipertensão, apneia do sono e alterações metabólicas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="250">
+                        <button class="faq-btn w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none hover:bg-brand-lightGray transition-colors">
+                            <span class="font-bold font-heading text-brand-primary text-lg pr-4 flex items-center gap-3">
+                                <span class="text-brand-accent">04.</span> O acompanhamento termina após a cirurgia?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-blue-50 text-brand-accent flex items-center justify-center shrink-0">
+                                <i class="fas fa-chevron-down transition-transform duration-300 transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden bg-white">
+                            <p class="px-8 pb-6 text-brand-grayText leading-relaxed border-t border-brand-lightGray pt-6">
+                                Não. O acompanhamento pós-operatório é parte fundamental do tratamento para adaptação e manutenção de resultados no longo prazo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+                        <button class="faq-btn w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none hover:bg-brand-lightGray transition-colors">
+                            <span class="font-bold font-heading text-brand-primary text-lg pr-4 flex items-center gap-3">
+                                <span class="text-brand-accent">05.</span> O tratamento é igual para todos os pacientes?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-blue-50 text-brand-accent flex items-center justify-center shrink-0">
+                                <i class="fas fa-chevron-down transition-transform duration-300 transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden bg-white">
+                            <p class="px-8 pb-6 text-brand-grayText leading-relaxed border-t border-brand-lightGray pt-6">
+                                Não. Cada paciente é avaliado de forma individualizada com um plano de cuidado específico voltado para as suas necessidades.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="350">
+                        <button class="faq-btn w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none hover:bg-brand-lightGray transition-colors">
+                            <span class="font-bold font-heading text-brand-primary text-lg pr-4 flex items-center gap-3">
+                                <span class="text-brand-accent">06.</span> Como fica a alimentação após a cirurgia bariátrica?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-blue-50 text-brand-accent flex items-center justify-center shrink-0">
+                                <i class="fas fa-chevron-down transition-transform duration-300 transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden bg-white">
+                            <p class="px-8 pb-6 text-brand-grayText leading-relaxed border-t border-brand-lightGray pt-6">
+                                A alimentação passa por adaptações progressivas (fases líquida, pastosa e branda), sempre com orientação profissional e acompanhamento nutricional contínuo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-2xl shadow-sm border border-brand-border overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
+                        <button class="faq-btn w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none hover:bg-brand-lightGray transition-colors">
+                            <span class="font-bold font-heading text-brand-primary text-lg pr-4 flex items-center gap-3">
+                                <span class="text-brand-accent">07.</span> O controle da diabetes melhora logo após a cirurgia metabólica?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-blue-50 text-brand-accent flex items-center justify-center shrink-0">
+                                <i class="fas fa-chevron-down transition-transform duration-300 transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden bg-white">
+                            <p class="px-8 pb-6 text-brand-grayText leading-relaxed border-t border-brand-lightGray pt-6">
+                                Em muitos pacientes pode haver melhora precoce e significativa, mas a evolução varia. O acompanhamento médico rigoroso continua sendo indispensável.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-16 bg-brand-primary rounded-[2rem] p-10 text-center shadow-xl relative overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold font-heading text-white mb-4">Sua dúvida não está aqui?</h3>
+                        <p class="text-blue-100 mb-8 max-w-lg mx-auto">
+                            Nossa equipe está à disposição para esclarecer todos os detalhes sobre nossos tratamentos e sua jornada de saúde.
+                        </p>
+                        <a href="contato.html" class="inline-flex items-center justify-center gap-2 bg-brand-accent text-white font-bold px-8 py-4 rounded-xl hover:bg-white hover:text-brand-primary transition-all duration-300 shadow-lg hover:-translate-y-1">
+                            Falar com a equipe <i class="fas fa-headset ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer id="rodape" class="bg-white pt-20 pb-10 border-t border-brand-border">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                
+                <div class="lg:col-span-1" data-aos="fade-up" data-aos-delay="100">
+                    <a href="index.html" class="inline-flex items-center mb-6">
+                        <img src="assets/logo.jpg" alt="Clínica Baros" class="h-12 w-auto object-contain">
+                    </a>
+                    <p class="text-sm text-brand-grayText leading-relaxed mb-6">
+                        Faça o download do manual para saber mais detalhes sobre a cirurgia, dicas e outras informações importantes para o seu processo.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:text-brand-primary transition-colors group">
+                        <i class="fas fa-download group-hover:-translate-y-1 transition-transform"></i> Baixar Manual do Paciente
+                    </a>
+                </div>
+
+                <div class="lg:col-span-1" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="text-brand-primary font-bold font-heading mb-6 uppercase tracking-wider text-xs">Onde Estamos</h4>
+                    <address class="not-italic text-sm text-brand-grayText leading-relaxed hover:text-brand-primary transition-colors duration-300">
+                        Av. Prof. Magalhães Neto, 1541<br>
+                        Bloco A, salas 4011 a 4013<br>
+                        Centro Médico do Hospital da Bahia<br>
+                        Pituba - CEP: 41810-011
+                    </address>
+                </div>
+
+                <div class="lg:col-span-1" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="text-brand-primary font-bold font-heading mb-6 uppercase tracking-wider text-xs">Fale Conosco</h4>
+                    <div class="flex flex-col gap-3 text-sm text-brand-grayText">
+                        <a href="tel:+557130398282" class="flex items-center gap-3 hover:text-brand-accent hover:translate-x-2 transition-all duration-300 group">
+                            <i class="fas fa-phone-alt text-brand-primary/50 group-hover:text-brand-accent transition-colors"></i> (71) 3039-8282
+                        </a>
+                        <a href="tel:+557130112950" class="flex items-center gap-3 hover:text-brand-accent hover:translate-x-2 transition-all duration-300 group">
+                            <i class="fas fa-phone-alt text-brand-primary/50 group-hover:text-brand-accent transition-colors"></i> (71) 3011-2950
+                        </a>
+                        <a href="mailto:clinicabaros@gmail.com" class="flex items-center gap-3 hover:text-brand-accent hover:translate-x-2 transition-all duration-300 group">
+                            <i class="fas fa-envelope text-brand-primary/50 group-hover:text-brand-accent transition-colors"></i> clinicabaros@gmail.com
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1" data-aos="fade-up" data-aos-delay="400">
+                    <h4 class="text-brand-primary font-bold font-heading mb-6 uppercase tracking-wider text-xs">Acompanhe</h4>
+                    <div class="flex gap-4">
+                        <a href="#" aria-label="Instagram" class="w-12 h-12 rounded-full bg-brand-lightGray border border-brand-border flex items-center justify-center text-brand-primary hover:bg-brand-accent hover:text-white hover:border-transparent hover:-translate-y-2 hover:shadow-lg hover:rotate-6 transition-all duration-300">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" aria-label="WhatsApp" class="w-12 h-12 rounded-full bg-brand-lightGray border border-brand-border flex items-center justify-center text-brand-primary hover:bg-green-500 hover:text-white hover:border-transparent hover:-translate-y-2 hover:shadow-lg hover:-rotate-6 transition-all duration-300">
+                            <i class="fab fa-whatsapp text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-brand-border pt-8 text-sm text-brand-grayText flex flex-col md:flex-row justify-between items-center gap-4" data-aos="fade-in" data-aos-delay="500">
+                <p>&copy; 2026 Clínica Baros. Todos os direitos reservados.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="relative group">
+                        <span class="hover:text-brand-primary transition-colors">Termos de Uso</span>
+                        <span class="absolute bottom-0 left-0 w-full h-px bg-brand-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    </a>
+                    <a href="#" class="relative group">
+                        <span class="hover:text-brand-primary transition-colors">Política de Privacidade</span>
+                        <span class="absolute bottom-0 left-0 w-full h-px bg-brand-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicialização do AOS
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Script Navbar
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.getElementById('nav-links');
+        const mobileBtn = document.getElementById('mobile-btn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent', 'border-transparent', 'py-6');
+                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'border-brand-border', 'shadow-sm', 'py-4');
+                navLinks.classList.remove('text-white');
+                navLinks.classList.add('text-brand-dark');
+                mobileBtn.classList.remove('text-white');
+                mobileBtn.classList.add('text-brand-primary');
+            } else {
+                navbar.classList.add('bg-transparent', 'border-transparent', 'py-6');
+                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'border-brand-border', 'shadow-sm', 'py-4');
+                navLinks.classList.add('text-white');
+                navLinks.classList.remove('text-brand-dark');
+                mobileBtn.classList.add('text-white');
+                mobileBtn.classList.remove('text-brand-primary');
+            }
+        });
+
+        // Script Accordion (FAQ)
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const btn = item.querySelector('.faq-btn');
+            const content = item.querySelector('.faq-content');
+            const icon = item.querySelector('i');
+
+            btn.addEventListener('click', () => {
+                const isOpen = content.classList.contains('max-h-[500px]');
+
+                // Fecha todas as outras sanfonas abertas
+                document.querySelectorAll('.faq-content').forEach(c => {
+                    c.classList.remove('max-h-[500px]');
+                    c.classList.add('max-h-0');
+                });
+                
+                // Volta o ícone de todas as outras para baixo
+                document.querySelectorAll('.faq-btn i').forEach(i => {
+                    i.classList.remove('rotate-180', 'text-brand-primary');
+                });
+
+                // Remove borda azul de todas
+                faqItems.forEach(faq => {
+                    faq.classList.remove('border-brand-accent/50', 'shadow-md');
+                });
+
+                // Se a clicada não estava aberta, nós a abrimos
+                if (!isOpen) {
+                    content.classList.remove('max-h-0');
+                    content.classList.add('max-h-[500px]');
+                    icon.classList.add('rotate-180', 'text-brand-primary');
+                    item.classList.add('border-brand-accent/50', 'shadow-md');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
