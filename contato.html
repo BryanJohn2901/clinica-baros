@@ -30,12 +30,14 @@
     </style>
 </head>
 <body class="bg-brand-lightGray text-brand-dark font-sans antialiased overflow-x-hidden">
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand-border shadow-sm">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
-            <a href="index.html" class="flex items-center"><img src="assets/logo.jpg" alt="Clínica Baros" class="h-12 w-auto object-contain"></a>
-            <div class="hidden lg:flex items-center gap-8 font-medium text-sm text-brand-dark">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-6 bg-transparent border-b border-transparent transition-all duration-300">
+        <div class="container mx-auto px-6 flex justify-between items-center max-w-7xl">
+            <a href="index.html" class="flex items-center">
+                <img id="nav-logo" src="assets/logo-baros-branca-site.png" alt="Clínica Baros" class="h-12 w-auto object-contain">
+            </a>
+            <div id="nav-links" class="hidden lg:flex items-center gap-8 font-semibold text-base text-white transition-colors duration-300">
                 <a href="index.html" class="hover:text-brand-accent">Home</a>
-                <a href="clinica.html" class="hover:text-brand-accent">Clínica Baros</a>
+                <a href="clinica.html" class="hover:text-brand-accent">A Clínica Baros</a>
                 <div class="relative group">
                     <button class="inline-flex items-center gap-2 hover:text-brand-accent">
                         Serviços <i class="fas fa-chevron-down text-xs"></i>
@@ -47,7 +49,7 @@
                 </div>
                 <div class="relative group">
                     <button class="inline-flex items-center gap-2 hover:text-brand-accent">
-                        Cirurgia <i class="fas fa-chevron-down text-xs"></i>
+                        Cirurgias <i class="fas fa-chevron-down text-xs"></i>
                     </button>
                     <div class="absolute top-full left-0 mt-3 w-56 bg-white text-brand-dark rounded-xl shadow-xl border border-brand-border p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                         <a href="cirurgia-bariatrica.html" class="block px-4 py-2 rounded-lg hover:bg-brand-lightGray">Bariátrica</a>
@@ -59,9 +61,36 @@
                 <a href="blog.html" class="hover:text-brand-accent">Blog</a>
                 <a href="contato.html" class="hover:text-brand-accent">Contato</a>
             </div>
+            <button id="mobile-btn" class="lg:hidden text-white text-2xl hover:text-brand-accent transition-colors duration-300">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
-    <div class="h-20"></div>
+    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-brand-primary/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="mobile-menu" class="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300">
+        <div class="h-full flex flex-col">
+            <div class="flex items-center justify-between px-6 py-5 border-b border-brand-border">
+                <img src="assets/logo-baros-site.png" alt="Clínica Baros" class="h-10 w-auto object-contain">
+                <button id="mobile-close-btn" class="text-brand-primary text-2xl hover:text-brand-accent transition-colors" aria-label="Fechar menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="px-6 py-6 overflow-y-auto">
+                <ul class="space-y-4 text-brand-primary font-semibold">
+                    <li><a href="index.html" class="block hover:text-brand-accent transition-colors">Home</a></li>
+                    <li><a href="clinica.html" class="block hover:text-brand-accent transition-colors">A Clínica Baros</a></li>
+                    <li><a href="tratamento-obesidade.html" class="block hover:text-brand-accent transition-colors">Tratamento da Obesidade</a></li>
+                    <li><a href="avaliacao-corporal.html" class="block hover:text-brand-accent transition-colors">Avaliação Corporal</a></li>
+                    <li><a href="cirurgia-bariatrica.html" class="block hover:text-brand-accent transition-colors">Cirurgia Bariátrica</a></li>
+                    <li><a href="cirurgia-metabolica.html" class="block hover:text-brand-accent transition-colors">Cirurgia Metabólica</a></li>
+                    <li><a href="perguntas-frequentes.html" class="block hover:text-brand-accent transition-colors">Perguntas Frequentes</a></li>
+                    <li><a href="convenios.html" class="block hover:text-brand-accent transition-colors">Convênios</a></li>
+                    <li><a href="blog.html" class="block hover:text-brand-accent transition-colors">Blog</a></li>
+                    <li><a href="contato.html" class="block hover:text-brand-accent transition-colors">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
     <section class="relative h-72 bg-cover bg-center flex items-center justify-center" style="background-image:url('https://images.unsplash.com/photo-1478476868527-002ae3f3e159?q=80&w=1920&auto=format&fit=crop');">
         <div class="absolute inset-0 bg-black/45"></div>
         <h1 class="relative text-white text-4xl md:text-5xl font-bold">Contato</h1>
@@ -109,5 +138,54 @@
             <div class="border-t border-brand-border mt-8 pt-6 text-sm text-brand-grayText"><p>&copy; 2026 Clínica Baros. Todos os direitos reservados.</p></div>
         </div>
     </footer>
+    <script>
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.getElementById('nav-links');
+        const mobileBtn = document.getElementById('mobile-btn');
+        const navLogo = document.getElementById('nav-logo');
+        const mobileCloseBtn = document.getElementById('mobile-close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent', 'border-transparent', 'py-6');
+                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'border-brand-border', 'shadow-sm', 'py-4');
+                navLinks.classList.remove('text-white');
+                navLinks.classList.add('text-brand-dark');
+                mobileBtn.classList.remove('text-white');
+                mobileBtn.classList.add('text-brand-primary');
+                navLogo.src = 'assets/logo-baros-site.png';
+            } else {
+                navbar.classList.add('bg-transparent', 'border-transparent', 'py-6');
+                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'border-brand-border', 'shadow-sm', 'py-4');
+                navLinks.classList.add('text-white');
+                navLinks.classList.remove('text-brand-dark');
+                mobileBtn.classList.add('text-white');
+                mobileBtn.classList.remove('text-brand-primary');
+                navLogo.src = 'assets/logo-baros-branca-site.png';
+            }
+        });
+
+        const openMobileMenu = () => {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenuBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.classList.add('overflow-hidden');
+        };
+
+        const closeMobileMenu = () => {
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenuBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            document.body.classList.remove('overflow-hidden');
+        };
+
+        mobileBtn.addEventListener('click', openMobileMenu);
+        mobileCloseBtn.addEventListener('click', closeMobileMenu);
+        mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+        mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMobileMenu));
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeMobileMenu();
+        });
+    </script>
 </body>
 </html>
