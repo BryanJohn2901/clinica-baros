@@ -50,6 +50,27 @@
         html { scroll-behavior: smooth; }
         body { animation: pageFade 0.5s ease-out; }
         a, button, input, textarea, select { transition: all 0.3s ease; }
+        .journey-card .journey-step-number,
+        .journey-card .journey-step-title,
+        .journey-card .journey-step-text {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .journey-card.in-view .journey-step-number {
+            animation: journeyReveal 0.45s ease forwards;
+        }
+        .journey-card.in-view .journey-step-title {
+            animation: journeyReveal 0.45s ease forwards;
+            animation-delay: 0.2s;
+        }
+        .journey-card.in-view .journey-step-text {
+            animation: journeyReveal 0.45s ease forwards;
+            animation-delay: 0.4s;
+        }
+        @keyframes journeyReveal {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         @keyframes pageFade {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
@@ -61,10 +82,10 @@
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-6 bg-transparent border-b border-transparent transition-all duration-300" data-aos="fade-down" data-aos-duration="800">
         <div class="container mx-auto px-6 flex justify-between items-center max-w-7xl">
             <a href="index.html" class="flex items-center">
-                <img src="assets/logo.jpg" alt="Clínica Baros" class="h-12 w-auto object-contain">
+                <img id="nav-logo" src="assets/logo-baros-branca-site.png" alt="Clínica Baros" class="h-12 w-auto object-contain">
             </a>
             
-            <div id="nav-links" class="hidden lg:flex items-center gap-8 font-medium text-sm text-white transition-colors duration-300">
+            <div id="nav-links" class="hidden lg:flex items-center gap-8 font-semibold text-base text-white transition-colors duration-300">
                 <a href="index.html" class="hover:text-brand-accent">Home</a>
                 <a href="clinica.html" class="hover:text-brand-accent">A Clínica Baros</a>
                 <div class="relative group">
@@ -97,15 +118,46 @@
         </div>
     </nav>
 
+    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-brand-primary/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="mobile-menu" class="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300">
+        <div class="h-full flex flex-col">
+            <div class="flex items-center justify-between px-6 py-5 border-b border-brand-border">
+                <img src="assets/logo-baros-site.png" alt="Clínica Baros" class="h-10 w-auto object-contain">
+                <button id="mobile-close-btn" class="text-brand-primary text-2xl hover:text-brand-accent transition-colors" aria-label="Fechar menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="px-6 py-6 overflow-y-auto">
+                <ul class="space-y-4 text-brand-primary font-semibold">
+                    <li><a href="index.html" class="block hover:text-brand-accent transition-colors">Home</a></li>
+                    <li><a href="clinica.html" class="block hover:text-brand-accent transition-colors">A Clínica Baros</a></li>
+                    <li><a href="tratamento-obesidade.html" class="block hover:text-brand-accent transition-colors">Tratamento da Obesidade</a></li>
+                    <li><a href="avaliacao-corporal.html" class="block hover:text-brand-accent transition-colors">Avaliação Corporal</a></li>
+                    <li><a href="cirurgia-bariatrica.html" class="block hover:text-brand-accent transition-colors">Cirurgia Bariátrica</a></li>
+                    <li><a href="cirurgia-metabolica.html" class="block hover:text-brand-accent transition-colors">Cirurgia Metabólica</a></li>
+                    <li><a href="perguntas-frequentes.html" class="block hover:text-brand-accent transition-colors">Perguntas Frequentes</a></li>
+                    <li><a href="convenios.html" class="block hover:text-brand-accent transition-colors">Convênios</a></li>
+                    <li><a href="blog.html" class="block hover:text-brand-accent transition-colors">Blog</a></li>
+                    <li><a href="contato.html" class="block hover:text-brand-accent transition-colors">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="px-6 pb-6 mt-auto">
+                <a href="contato.html" class="w-full inline-flex justify-center items-center gap-2 bg-brand-accent text-white font-bold px-5 py-3 rounded-xl hover:bg-brand-primary transition-colors">
+                    Agendar Consulta <i class="fas fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+
     <main>
-        <header id="hero" class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden group/hero">
+        <header id="hero" class="relative py-24 lg:py-28 min-h-[92vh] flex items-center overflow-hidden group/hero">
             <div class="absolute inset-0 z-0 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2000&auto=format&fit=crop" alt="Ambiente hospitalar moderno" class="w-full h-full object-cover object-center transform scale-100 group-hover/hero:scale-105 transition-transform duration-[10s] ease-out">
-                <div class="absolute inset-0 bg-brand-primary/95 backdrop-blur-[2px]"></div>
+                <img src="assets/Clínica/7a327397-abb5-4bd7-a5d3-493607d8f1f8.jpg" alt="Ambiente da Clínica Baros" class="w-full h-full object-cover object-center transform scale-100 group-hover/hero:scale-105 transition-transform duration-[10s] ease-out">
+                <div class="absolute inset-0 bg-brand-primary/85 backdrop-blur-[2px]"></div>
             </div>
 
-            <div class="container mx-auto px-6 max-w-7xl relative z-10">
-                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div class="w-full px-6 lg:px-12 xl:px-20 relative z-10">
+                <div class="max-w-[1600px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                     <div class="w-full lg:w-1/2 flex flex-col items-start text-left" data-aos="fade-right" data-aos-duration="1000">
                         <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 text-white text-sm font-semibold mb-6 border border-white/20 backdrop-blur-sm hover:bg-white/20 transition-colors duration-300 cursor-default">
                             <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse shadow-[0_0_10px_rgba(53,180,232,0.8)]"></span>
@@ -313,49 +365,140 @@
             </div>
         </section>
 
-        <section id="jornada" class="py-24 bg-brand-primary relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10 pointer-events-none">
-                <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-accent rounded-full blur-[120px]"></div>
-                <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-900 rounded-full blur-[120px]"></div>
+        <section id="jornada" class="py-24 bg-[#081f2d] relative overflow-hidden font-sans">
+            <!-- Efeitos de Fundo (Brilhos e Linha) -->
+            <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+                <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#dcb074]/10 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#2297b6]/10 rounded-full blur-[120px]"></div>
+                
+                <!-- Linha horizontal conectando os cards (visível em telas grandes) -->
+                <div class="hidden lg:block absolute top-[58%] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#2297b6]/40 to-transparent shadow-[0_0_15px_rgba(34,151,182,0.5)]"></div>
             </div>
-
+        
             <div class="container mx-auto px-6 max-w-7xl relative z-10">
+                <!-- Cabeçalho da Seção -->
                 <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-                    <span class="text-brand-accent font-bold tracking-widest uppercase text-xs mb-4 block">Segurança em cada etapa</span>
-                    <h2 class="text-3xl md:text-5xl font-extrabold font-heading text-white mb-6 tracking-tight">O seu caminho <span class="text-brand-accent">começa aqui</span></h2>
-                    <p class="text-blue-100/80 text-lg leading-relaxed">
+                    <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-4 block">Segurança em cada etapa</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">O seu caminho <span class="text-brand-accent">começa aqui</span></h2>
+                    <p class="text-[#a8c2d1] text-lg leading-relaxed">
                         Do primeiro atendimento ao pós-operatório: uma jornada transparente, com orientação contínua e total segurança hospitalar.
                     </p>
                 </div>
-
-                <div class="relative">
-                    <div class="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-y-1/2"></div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
-                        <div class="rounded-[2.5rem] overflow-hidden border border-white/20 shadow-2xl" data-aos="fade-up" data-aos-delay="100">
-                            <img src="assets/SITE-BAROS-01.jpg%20(1).jpeg" alt="Passo 1 - Primeira Consulta" class="w-full h-full object-cover">
+        
+                <!-- Grid de Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+                    
+                    <!-- Card 1 -->
+                    <article class="group relative rounded-[2rem] overflow-hidden border border-[#2297b6]/30 bg-[#0c2a3d] hover:border-[#2297b6]/80 transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(34,151,182,0.15)] min-h-[360px] flex flex-col justify-center p-8 md:p-10" data-aos="fade-up" data-aos-delay="100">
+                        <!-- Imagem de Fundo do Card -->
+                        <img src="assets/A1.png" alt="Passo 1" class="absolute inset-0 w-full h-full object-cover object-center opacity-75 scale-[1.02] group-hover:scale-105 transition-all duration-700 will-change-transform">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#0c2a3d]/35 via-[#0c2a3d]/15 to-transparent"></div>
+                        
+                        <!-- Número Vazado -->
+                        <div class="absolute -left-5 -top-5 text-[15rem] font-black leading-none text-transparent pointer-events-none select-none z-10 opacity-80" style="-webkit-text-stroke: 2px #2297b6;">
+                            1
                         </div>
-                        <div class="rounded-[2.5rem] overflow-hidden border border-white/20 shadow-2xl" data-aos="fade-up" data-aos-delay="200">
-                            <img src="assets/SITE-BAROS-02.jpg%20(1).jpeg" alt="Passo 2 - Avaliação multidisciplinar" class="w-full h-full object-cover">
+        
+                        <!-- Conteúdo do Card -->
+                        <div class="relative z-20 pl-16 md:pl-20">
+                            <h3 class="text-xl md:text-2xl font-extrabold text-white group-hover:text-brand-accent mb-4 leading-tight">Primeira<br>Consulta</h3>
+                            <p class="text-[#a8c2d1] text-sm md:text-base leading-relaxed">
+                                Escuta, acolhimento e entendimento do seu caso.
+                            </p>
                         </div>
-                        <div class="rounded-[2.5rem] overflow-hidden border border-white/20 shadow-2xl" data-aos="fade-up" data-aos-delay="300">
-                            <img src="assets/SITE-BAROS-03.jpg%20(1).jpeg" alt="Passo 3 - Definição do tratamento" class="w-full h-full object-cover">
+                    </article>
+        
+                    <!-- Card 2 -->
+                    <article class="group relative rounded-[2rem] overflow-hidden border border-[#2297b6]/30 bg-[#0c2a3d] hover:border-[#2297b6]/80 transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(34,151,182,0.15)] min-h-[360px] flex flex-col justify-center p-8 md:p-10" data-aos="fade-up" data-aos-delay="200">
+                        <img src="assets/A2.png" alt="Passo 2" class="absolute inset-0 w-full h-full object-cover object-center opacity-75 scale-[1.02] group-hover:scale-105 transition-all duration-700 will-change-transform">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#0c2a3d]/35 via-[#0c2a3d]/15 to-transparent"></div>
+                        
+                        <div class="absolute -left-5 -top-5 text-[15rem] font-black leading-none text-transparent pointer-events-none select-none z-10 opacity-80" style="-webkit-text-stroke: 2px #2297b6;">
+                            2
                         </div>
-                        <div class="rounded-[2.5rem] overflow-hidden border border-white/20 shadow-2xl" data-aos="fade-up" data-aos-delay="400">
-                            <img src="assets/SITE-BAROS-04.jpg%20(1).jpeg" alt="Passo 4 - Preparação pré-operatória" class="w-full h-full object-cover">
+        
+                        <div class="relative z-20 pl-16 md:pl-20">
+                            <h3 class="text-xl md:text-2xl font-extrabold text-white group-hover:text-brand-accent mb-4 leading-tight">Avaliação<br>multidisciplinar</h3>
+                            <p class="text-[#a8c2d1] text-sm md:text-base leading-relaxed">
+                                Análise cuidadosa com os profissionais envolvidos no tratamento: aspectos clínicos, nutricionais, emocionais e metabólicos.
+                            </p>
                         </div>
-                        <div class="rounded-[2.5rem] overflow-hidden border border-white/20 shadow-2xl" data-aos="fade-up" data-aos-delay="500">
-                            <img src="assets/SITE-BAROS-05.jpg%20(1).jpeg" alt="Passo 5 - Cirurgia" class="w-full h-full object-cover">
+                    </article>
+        
+                    <!-- Card 3 -->
+                    <article class="group relative rounded-[2rem] overflow-hidden border border-[#2297b6]/30 bg-[#0c2a3d] hover:border-[#2297b6]/80 transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(34,151,182,0.15)] min-h-[360px] flex flex-col justify-center p-8 md:p-10" data-aos="fade-up" data-aos-delay="300">
+                        <img src="assets/A3.png" alt="Passo 3" class="absolute inset-0 w-full h-full object-cover object-center opacity-75 scale-[1.02] group-hover:scale-105 transition-all duration-700 will-change-transform">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#0c2a3d]/35 via-[#0c2a3d]/15 to-transparent"></div>
+                        
+                        <div class="absolute -left-5 -top-5 text-[15rem] font-black leading-none text-transparent pointer-events-none select-none z-10 opacity-80" style="-webkit-text-stroke: 2px #2297b6;">
+                            3
                         </div>
-                        <div class="rounded-[2.5rem] overflow-hidden border border-white/20 shadow-2xl" data-aos="fade-up" data-aos-delay="600">
-                            <img src="assets/SITE-BAROS-06.jpg%20(1).jpeg" alt="Passo 6 - Acompanhamento pós-cirurgia" class="w-full h-full object-cover">
+        
+                        <div class="relative z-20 pl-16 md:pl-20">
+                            <h3 class="text-xl md:text-2xl font-extrabold text-white group-hover:text-brand-accent mb-4 leading-tight">Definição do<br>tratamento</h3>
+                            <p class="text-[#a8c2d1] text-sm md:text-base leading-relaxed">
+                                A equipe define o caminho mais indicado: acompanhamento clínico, cirurgia bariátrica ou metabólica.
+                            </p>
                         </div>
-                    </div>
+                    </article>
+        
+                    <!-- Card 4 -->
+                    <article class="group relative rounded-[2rem] overflow-hidden border border-[#2297b6]/30 bg-[#0c2a3d] hover:border-[#2297b6]/80 transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(34,151,182,0.15)] min-h-[360px] flex flex-col justify-center p-8 md:p-10" data-aos="fade-up" data-aos-delay="400">
+                        <img src="assets/A4.png" alt="Passo 4" class="absolute inset-0 w-full h-full object-cover object-center opacity-75 scale-[1.02] group-hover:scale-105 transition-all duration-700 will-change-transform">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#0c2a3d]/35 via-[#0c2a3d]/15 to-transparent"></div>
+                        
+                        <div class="absolute -left-5 -top-5 text-[15rem] font-black leading-none text-transparent pointer-events-none select-none z-10 opacity-80" style="-webkit-text-stroke: 2px #2297b6;">
+                            4
+                        </div>
+        
+                        <div class="relative z-20 pl-16 md:pl-20">
+                            <h3 class="text-xl md:text-2xl font-extrabold text-white group-hover:text-brand-accent mb-4 leading-tight">Preparação<br>pré-operatória</h3>
+                            <p class="text-[#a8c2d1] text-sm md:text-base leading-relaxed">
+                                Etapa de preparo com exames e orientações para chegar ao procedimento com segurança e tranquilidade.
+                            </p>
+                        </div>
+                    </article>
+        
+                    <!-- Card 5 -->
+                    <article class="group relative rounded-[2rem] overflow-hidden border border-[#2297b6]/30 bg-[#0c2a3d] hover:border-[#2297b6]/80 transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(34,151,182,0.15)] min-h-[360px] flex flex-col justify-center p-8 md:p-10" data-aos="fade-up" data-aos-delay="500">
+                        <img src="assets/A5.png" alt="Passo 5" class="absolute inset-0 w-full h-full object-cover object-center opacity-75 scale-[1.02] group-hover:scale-105 transition-all duration-700 will-change-transform">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#0c2a3d]/35 via-[#0c2a3d]/15 to-transparent"></div>
+                        
+                        <div class="absolute -left-5 -top-5 text-[15rem] font-black leading-none text-transparent pointer-events-none select-none z-10 opacity-80" style="-webkit-text-stroke: 2px #2297b6;">
+                            5
+                        </div>
+        
+                        <div class="relative z-20 pl-16 md:pl-20">
+                            <h3 class="text-xl md:text-2xl font-extrabold text-white group-hover:text-brand-accent mb-4 leading-tight">Cirurgia</h3>
+                            <p class="text-[#a8c2d1] text-sm md:text-base leading-relaxed">
+                                Realizada com planejamento, suporte especializado e estrutura adequada para cada paciente.
+                            </p>
+                        </div>
+                    </article>
+        
+                    <!-- Card 6 -->
+                    <article class="group relative rounded-[2rem] overflow-hidden border border-[#2297b6]/30 bg-[#0c2a3d] hover:border-[#2297b6]/80 transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(34,151,182,0.15)] min-h-[360px] flex flex-col justify-center p-8 md:p-10" data-aos="fade-up" data-aos-delay="600">
+                        <img src="assets/A6.png" alt="Passo 6" class="absolute inset-0 w-full h-full object-cover object-center opacity-75 scale-[1.02] group-hover:scale-105 transition-all duration-700 will-change-transform">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#0c2a3d]/35 via-[#0c2a3d]/15 to-transparent"></div>
+                        
+                        <div class="absolute -left-5 -top-5 text-[15rem] font-black leading-none text-transparent pointer-events-none select-none z-10 opacity-80" style="-webkit-text-stroke: 2px #2297b6;">
+                            6
+                        </div>
+        
+                        <div class="relative z-20 pl-16 md:pl-20">
+                            <h3 class="text-xl md:text-2xl font-extrabold text-white group-hover:text-brand-accent mb-4 leading-tight">Acompanhamento<br>pós-operatório</h3>
+                            <p class="text-[#a8c2d1] text-sm md:text-base leading-relaxed">
+                                A equipe segue ao seu lado na recuperação, reeducação de hábitos e manutenção da saúde a longo prazo.
+                            </p>
+                        </div>
+                    </article>
+        
                 </div>
-
-                <div class="mt-20 text-center" data-aos="zoom-in">
-                    <a href="contato.html" class="inline-flex items-center gap-4 px-10 py-5 bg-brand-accent text-white font-bold rounded-full hover:bg-white hover:text-brand-primary transition-all duration-500 shadow-2xl hover:shadow-brand-accent/40 group">
-                        Agendar primeira consulta <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+        
+                <!-- Botão CTA -->
+                <div class="mt-20 text-center relative z-10" data-aos="zoom-in">
+                    <a href="contato.html" class="inline-flex items-center justify-center gap-4 px-10 py-5 bg-brand-accent text-white font-extrabold text-lg rounded-full hover:bg-white hover:text-brand-primary hover:scale-105 hover:shadow-[0_0_25px_rgba(53,180,232,0.5)] transition-all duration-300 group">
+                        Agendar primeira consulta <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
             </div>
@@ -446,6 +589,10 @@
         const navbar = document.getElementById('navbar');
         const navLinks = document.getElementById('nav-links');
         const mobileBtn = document.getElementById('mobile-btn');
+        const navLogo = document.getElementById('nav-logo');
+        const mobileCloseBtn = document.getElementById('mobile-close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -460,6 +607,7 @@
                 // Muda o botão mobile para a cor escura
                 mobileBtn.classList.remove('text-white');
                 mobileBtn.classList.add('text-brand-primary');
+                navLogo.src = 'assets/logo-baros-site.png';
             } else {
                 // Volta para transparente no topo
                 navbar.classList.add('bg-transparent', 'border-transparent', 'py-6');
@@ -472,8 +620,45 @@
                 // Volta o botão mobile para branco
                 mobileBtn.classList.add('text-white');
                 mobileBtn.classList.remove('text-brand-primary');
+                navLogo.src = 'assets/logo-baros-branca-site.png';
             }
         });
+
+        const openMobileMenu = () => {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenuBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.classList.add('overflow-hidden');
+        };
+
+        const closeMobileMenu = () => {
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenuBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            document.body.classList.remove('overflow-hidden');
+        };
+
+        mobileBtn.addEventListener('click', openMobileMenu);
+        mobileCloseBtn.addEventListener('click', closeMobileMenu);
+        mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+
+        mobileMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeMobileMenu();
+        });
+
+        const journeyCards = document.querySelectorAll('.journey-card');
+        const journeyObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.25 });
+
+        journeyCards.forEach((card) => journeyObserver.observe(card));
     </script>
 </body>
 </html>
